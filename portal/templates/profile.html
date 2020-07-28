@@ -1,0 +1,190 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-fluid">
+ 	    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="rose">
+                    <i class="material-icons">perm_identity</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">Edit Profile - <small class="category">Complete your profile</small></h4>
+
+                    <form method="POST" role="form" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Company (disabled)</label>
+                                    <input type="text" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Username</label>
+                                    {% if form.username.errors %}
+                                    {{ form.username(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback"  style="text-align: center;">
+                                        {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.username(class="form-control",type="text") }}
+                                    {% endif %}
+                                   
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Email address</label>
+                                    {% if form.email.errors %}
+                                    {{ form.email(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback"  style="text-align: center;">
+                                       {% for error in form.email.errors %}
+                                       <span>{{ error }}</span>
+                                       {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.email(class="form-control",type="email", id="email") }}
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Fist Name</label>
+                                    {% if form.firstname.errors %}
+                                    {{ form.firstname(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback"  style="text-align: center;">
+                                       {% for error in form.firstname.errors %}
+                                       <span>{{ error }}</span>
+                                       {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.firstname(class="form-control",type="text") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Last Name</label>
+                                    {% if form.lastname.errors %}
+                                    {{ form.lastname(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback"  style="text-align: center;">
+                                       {% for error in form.lastname.errors %}
+                                       <span>{{ error }}</span>
+                                       {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.lastname(class="form-control",type="text") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Adress</label>
+                                    <input type="text" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">City</label>
+                                    <input type="text" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Nationality</label>
+                                    {% if form.country.errors %}
+                                    {{ form.country(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback"  style="text-align: center;">
+                                       {% for error in form.country.errors %}
+                                       <span>{{ error }}</span>
+                                       {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.country(class="form-control",type="text") }}
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Designation</label>
+                                    {% if form.designation.errors %}
+                                    {{ form.designation(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback"  style="text-align: center;">
+                                       {% for error in form.designation.errors %}
+                                       <span>{{ error }}</span>
+                                       {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.designation(class="form-control",type="text") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Introduce Yourself</label>
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                        <textarea class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{ form.submit(class="btn btn-rose pull-right") }}
+                        <div class="clearfix"></div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-profile">
+                <div class="card-avatar">
+                    <a href="#pablo">
+                        <img class="img" src="{{image_file}}" />
+                    </a>
+                </div>
+
+                <div class="card-content">
+                    <h6 class="category text-gray">{{current_user.designation}}</h6>
+                    <h4 class="card-title">{{current_user.username}}</h4>
+                    <p class="description">
+                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                    </p>
+                    
+                    <div>
+                        <span class="btn btn-round btn-rose btn-file">
+                            <span class="fileinput-new">Add Photo</span>
+                            <input type="hidden"><input type="file" name="...">
+                            {{form.picture()}}
+                            {% if form.picture.errors %}
+                                {% for error in form.picture.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="ripple-container"></div></span>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
